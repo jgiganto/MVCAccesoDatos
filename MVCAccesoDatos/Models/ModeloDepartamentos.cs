@@ -18,21 +18,21 @@ namespace MVCAccesoDatos.Models
 
         public ModeloDepartamentos()
         {
-            cadenaconexion =
+            this.cadenaconexion =
             ConfigurationManager.ConnectionStrings["tajamar"].ConnectionString;
-            cn = new SqlConnection(cadenaconexion);
-            com.Connection = cn;
-            com = new SqlCommand();
-            addept = new SqlDataAdapter();
-            ds = new DataSet();
+            this.com = new SqlCommand();
+            this.cn = new SqlConnection(this.cadenaconexion);
+            this.com.Connection = this.cn;
+            this.addept = new SqlDataAdapter();
+            this.ds = new DataSet();
         }
 
         public List<Departamento> GetDepartamentos()
         {
-            com.CommandType = CommandType.Text;
-            com.CommandText = "SELECT * FROM DEPT";
-            this.addept.SelectCommand = com;
-            this.addept.Fill(ds, "DEPT");
+            this.com.CommandType = CommandType.Text;
+            this.com.CommandText = "SELECT * FROM DEPT";
+            this.addept.SelectCommand = this.com;
+            this.addept.Fill(this.ds,"DEPT");
             List<Departamento> lista = new List<Departamento>();
             foreach(DataRow fila in ds.Tables["DEPT"].Rows)
             {

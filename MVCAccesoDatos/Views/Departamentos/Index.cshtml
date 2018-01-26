@@ -1,0 +1,15 @@
+﻿
+@model List<MVCAccesoDatos.Models.Departamento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>LISTA DE DEPARTAMENTOS</h2>
+
+<ul>
+    @foreach(MVCAccesoDatos.Models.Departamento dept in Model)
+    {
+        <li>@dept.Nombre</li>
+    }
+</ul>
