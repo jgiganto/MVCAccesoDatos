@@ -9,11 +9,17 @@ namespace MVCAccesoDatos.Controllers
     public class DepartamentosController : Controller
     {
         // GET: Departamentos
+        ModeloDepartamentos modelo = new ModeloDepartamentos();
         public ActionResult Index()
         {
-            ModeloDepartamentos modelo = new ModeloDepartamentos();
+            
             List<Departamento> lista = modelo.GetDepartamentos();
             return View(lista);
+        }
+        public ActionResult Detalles(int deptno)
+        {
+            Departamento dept = modelo.BuscarDepartamento(deptno);
+            return View(dept);
         }
     }
 }

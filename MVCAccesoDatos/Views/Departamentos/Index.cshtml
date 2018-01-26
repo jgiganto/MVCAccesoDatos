@@ -10,6 +10,12 @@
 <ul>
     @foreach(MVCAccesoDatos.Models.Departamento dept in Model)
     {
-        <li>@dept.Nombre</li>
+        <li>
+            @dept.Nombre
+            @Html.ActionLink("Detalles","Detalles","Departamentos",
+           new { deptno = dept.numero },null)
+            
+       </li>
+        
     }
 </ul>

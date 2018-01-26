@@ -45,6 +45,23 @@ namespace MVCAccesoDatos.Models
             return lista;
         }
 
+        public Departamento BuscarDepartamento(int numero)
+        {
+            SqlParameter pamnum = new SqlParameter("@DEPTNO",numero);
+            com.Parameters.Add(pamnum);
+            com.CommandType = CommandType.Text;
+            com.CommandText = "SELECT * FROM DEPT WHERE DEPT_NO=@DEPTNO";
+            addept.SelectCommand = com;
+            addept.Fill(ds, "DEPT");
+            DataRow fila = ds.Tables["DEPT"].Rows[0];
+            Departamento dept = new Departamento();
+            dept.numero = int.Parse(fila["DEPT_NO"].ToString());
+            dept.Nombre = fila["DNOMBRE"].ToString();
+            dept.Localidad = fila["LOC"].ToString();
+            return dept;
+
+        }
+
            
     }
 }

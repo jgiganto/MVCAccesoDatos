@@ -1,0 +1,13 @@
+﻿@model MVCAccesoDatos.Models.Doctores
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles del doctor</h2>
+
+<h1 style=" color:burlywood">Apellido: @Model.Apellido</h1>
+<h2 style="color:aquamarine">Especialidad: @Model.Especialidad</h2>
+<h2 style="color:aquamarine">Salario: @Model.Salario</h2>
+<hr />
+@Html.ActionLink("Volver al listado", "Index", "Doctores")
+
