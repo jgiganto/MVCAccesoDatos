@@ -5,7 +5,13 @@ using System.Web;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
-
+#region procalmacenados
+/*CREATE PROCEDURE CREARDEPARTAMENTO 
+(@DEPNO INT,@DNOMBRE NVARCHAR(20),@LOC NVARCHAR(20))
+AS 
+INSERT INTO DEPT (DEPT_NO,DNOMBRE,LOC) VALUES(@DEPNO,@DNOMBRE,@LOC)
+GO*/
+#endregion
 namespace MVCAccesoDatos.Models
 {
     public class ModeloDepartamentos
@@ -19,7 +25,7 @@ namespace MVCAccesoDatos.Models
         public ModeloDepartamentos()
         {
             this.cadenaconexion =
-            ConfigurationManager.ConnectionStrings["tajamar"].ConnectionString;
+            ConfigurationManager.ConnectionStrings["casa"].ConnectionString;
             this.com = new SqlCommand();
             this.cn = new SqlConnection(this.cadenaconexion);
             this.com.Connection = this.cn;
@@ -62,6 +68,40 @@ namespace MVCAccesoDatos.Models
 
         }
 
+        public Departamento InsertarDepartamento(Departamento departamento)
+        {
+            SqlParameter pamnum = new SqlParameter("@DEPNO", departamento.numero);
+            SqlParameter pamnom = new SqlParameter("@DNOMBRE", departamento.Nombre);
+            SqlParameter pamloc = new SqlParameter("@LOC", departamento.Localidad);
+            com.Parameters.Add(pamnum);
+            com.Parameters.Add(pamnom);
+            com.Parameters.Add(pamloc);
+            com.CommandType = CommandType.StoredProcedure;
+            com.CommandText = "CREARDEPARTAMENTO";
+            addept.SelectCommand = com;
+            if (ds.Tables.Contains("DEPARTAMENTOS"))
+            {
+                ds.Tables["DEPARTAMENTOS"].Rows.Clear();
+            }
+            addept.Fill(ds, "DEPARTAMENTOS");
+            com.Parameters.Clear();
+            return (departamento);
+
+        }
            
     }
 }
+/*SqlParameter pamhospcod = new SqlParameter("@HOSPITALCOD", hospitalcod);
+            SqlParameter pamincremento = new SqlParameter("@INCREMENTO", incremento);
+            this.com.Parameters.Add(pamhospcod);
+            this.com.Parameters.Add(pamincremento);
+            this.com.CommandType = CommandType.StoredProcedure;
+            this.com.CommandText = "MODIFICARSALARIO";
+            this.ademp.SelectCommand = this.com;
+            if (this.ds.Tables.Contains("EMPLEADOS"))
+            {
+                this.ds.Tables["EMPLEADOS"].Rows.Clear();
+            }
+            this.ademp.Fill(this.ds, "EMPLEADOS");
+            this.com.Parameters.Clear();
+ @DEPNO,@DNOMBRE,@LOC*/

@@ -18,7 +18,7 @@ namespace MVCAccesoDatos.Models
         
         public ModeloDoctores()
         {
-            cadenaconexion = ConfigurationManager.ConnectionStrings["tajamar"].ConnectionString;
+            cadenaconexion = ConfigurationManager.ConnectionStrings["casa"].ConnectionString;
             com = new SqlCommand();
             cn = new SqlConnection(cadenaconexion);
             com.Connection = cn;

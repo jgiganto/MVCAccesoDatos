@@ -9,7 +9,11 @@ namespace MVCAccesoDatos.Controllers
     public class DepartamentosController : Controller
     {
         // GET: Departamentos
-        ModeloDepartamentos modelo = new ModeloDepartamentos();
+        ModeloDepartamentos modelo;
+        public DepartamentosController()
+        {
+            modelo = new ModeloDepartamentos();
+        }
         public ActionResult Index()
         {
             
@@ -20,6 +24,16 @@ namespace MVCAccesoDatos.Controllers
         {
             Departamento dept = modelo.BuscarDepartamento(deptno);
             return View(dept);
+        }
+        [HttpPost]
+        public ActionResult Index(Departamento departamento)
+        {
+            modelo.InsertarDepartamento(departamento);
+            List<Departamento> lista = modelo.GetDepartamentos();
+
+            ViewBag.Mensaje = "NOMBRE " + departamento.Nombre +
+                " LOCALIDAD " + departamento.Localidad + " NUMERO " + departamento.numero;
+            return View(lista);
         }
     }
 }
