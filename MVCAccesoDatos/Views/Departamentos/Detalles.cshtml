@@ -6,8 +6,19 @@
 
 <h2>Detalles del departamento</h2>
 
-<h1 style=" color:aqua">Numero: @Model.</h1>
+<h1 style=" color:aqua">Numero: @Model.numero</h1>
 <h2 style="color:aquamarine">Nombre: @Model.Nombre</h2>
 <h2 style="color:aquamarine">Localidad: @Model.Localidad</h2>
 <hr />
 @Html.ActionLink("Volver al listado","Index","Departamentos")
+
+<div>
+    <h2>Modificar departamento</h2>
+    <form method="post">
+        Número : <input type="text" name="numero" /><br /><br />
+        Número nuevo: <input type="text" name="numeronuevo" /><br /><br />
+        Nombre : <input type="text" name="Nombre" /><br /><br />
+        Localidad : <input type="text" name="Localidad" /><br /><br />
+        <button type="submit">Modificar</button>
+    </form>
+</div>

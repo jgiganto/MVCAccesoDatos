@@ -20,20 +20,41 @@ namespace MVCAccesoDatos.Controllers
             List<Departamento> lista = modelo.GetDepartamentos();
             return View(lista);
         }
-        public ActionResult Detalles(int deptno)
-        {
-            Departamento dept = modelo.BuscarDepartamento(deptno);
-            return View(dept);
-        }
         [HttpPost]
         public ActionResult Index(Departamento departamento)
         {
             modelo.InsertarDepartamento(departamento);
             List<Departamento> lista = modelo.GetDepartamentos();
 
-            ViewBag.Mensaje = "NOMBRE " + departamento.Nombre +
-                " LOCALIDAD " + departamento.Localidad + " NUMERO " + departamento.numero;
+
+
+            ViewBag.Mensaje = "INSERTADO DEPARTAMENTO CON NOMBRE: " + departamento.Nombre +
+                ", LOCALIDAD: " + departamento.Localidad + " Y NUMERO: " + departamento.numero;
+             
             return View(lista);
         }
+        [HttpPost]
+        public ActionResult Index(int numerodel)
+        {
+            modelo.EliminarDepartamento(numerodel);
+            List<Departamento> lista = modelo.GetDepartamentos();
+            return View(lista);
+        }
+
+        public ActionResult Detalles(int deptno)
+        {
+            Departamento dept = modelo.BuscarDepartamento(deptno);
+            return View(dept);
+        }
+        [HttpPost]
+        public ActionResult Detalles(Departamento departamento)
+        {
+            modelo.ModificarDepartamento(departamento);
+            Departamento dept = modelo.BuscarDepartamento(departamento.numeronuevo);
+            return View(dept);
+
+        }
+        
     }
 }
+/*int numero,int numeronuevo,String Nombre,String Localidad*/

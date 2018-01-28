@@ -10,7 +10,16 @@ using System.Data;
 (@DEPNO INT,@DNOMBRE NVARCHAR(20),@LOC NVARCHAR(20))
 AS 
 INSERT INTO DEPT (DEPT_NO,DNOMBRE,LOC) VALUES(@DEPNO,@DNOMBRE,@LOC)
-GO*/
+GO
+CREATE PROCEDURE MODIFICARDEPARTAMENTO
+(@DEPNO INT,@DEPNO2 INT,@DNOMBRE NVARCHAR(20),@LOC NVARCHAR(20))
+AS
+UPDATE DEPT SET DEPT_NO = @DEPNO2,DNOMBRE = @DNOMBRE,LOC = @LOC
+WHERE DEPT_NO = @DEPNO 
+GO
+
+EXEC MODIFICARDEPARTAMENTO 77,80,'CINEASTAS','MARBELLA'
+ */
 #endregion
 namespace MVCAccesoDatos.Models
 {
@@ -67,6 +76,18 @@ namespace MVCAccesoDatos.Models
             return dept;
 
         }
+        public void EliminarDepartamento(int numerodel)
+        {
+            SqlParameter pamnum = new SqlParameter("@DEPTNO", numerodel);
+            com.Parameters.Add(pamnum);
+            com.CommandType = CommandType.Text;
+            com.CommandText = "DELETE  FROM DEPT WHERE DEPT_NO = @DEPTNO";
+            addept.SelectCommand = com;
+            addept.Fill(ds, "DEPT");
+            com.Parameters.Clear();            
+
+        }
+
 
         public Departamento InsertarDepartamento(Departamento departamento)
         {
@@ -88,10 +109,36 @@ namespace MVCAccesoDatos.Models
             return (departamento);
 
         }
+
+        public Departamento ModificarDepartamento(Departamento departamento)
+        {
+            SqlParameter pamnum = new SqlParameter("@DEPNO", departamento.numero);
+            SqlParameter pamnumnuevo = new SqlParameter("@DEPNO2", departamento.numeronuevo);
+            SqlParameter pamnom = new SqlParameter("@DNOMBRE", departamento.Nombre);
+            SqlParameter pamloc = new SqlParameter("@LOC", departamento.Localidad);
+            com.Parameters.Add(pamloc);
+            com.Parameters.Add(pamnom);
+            com.Parameters.Add(pamnumnuevo);
+            com.Parameters.Add(pamnum);
+            com.CommandType = CommandType.StoredProcedure;
+            com.CommandText = "MODIFICARDEPARTAMENTO";
+            addept.SelectCommand = com;
+            if (ds.Tables.Contains("DEPARTAMENTOS"))
+            {
+                ds.Tables["DEPARTAMENTOS"].Rows.Clear();
+            }
+            addept.Fill(ds, "DEPARTAMENTOS");
+            com.Parameters.Clear();
+            return (departamento);
+        }
            
     }
 }
-/*SqlParameter pamhospcod = new SqlParameter("@HOSPITALCOD", hospitalcod);
+/*DELETE  FROM DEPT
+WHERE DEPT_NO = 120
+ * 
+ * (@DEPNO INT,@DEPNO2 INT,@DNOMBRE NVARCHAR(20),@LOC NVARCHAR(20))
+ * SqlParameter pamhospcod = new SqlParameter("@HOSPITALCOD", hospitalcod);
             SqlParameter pamincremento = new SqlParameter("@INCREMENTO", incremento);
             this.com.Parameters.Add(pamhospcod);
             this.com.Parameters.Add(pamincremento);
