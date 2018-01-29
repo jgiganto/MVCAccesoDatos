@@ -7,13 +7,14 @@
 
 <h2>LISTA DE DEPARTAMENTOS</h2>
 
-<ul>
+<ul class="list-group">
     @foreach(MVCAccesoDatos.Models.Departamento dept in Model)
     {
-        <li>
+        <li class="list-group-item">
             @dept.Nombre
             @Html.ActionLink("Detalles","Detalles","Departamentos",
-           new { deptno = dept.numero },null)
+           new { deptno = dept.numero }, new { @class = "btn btn-warning glyphicon glyphicon-plus-sign" })
+         
             
        </li>
         
@@ -21,11 +22,11 @@
 </ul>
 <hr />
 <h3>INSERTAR DEPARTAMENTOS</h3>
-<form method="post">
+<form method="post" class="form-group">
     Número : <input type="text" name="numero" /><br /><br />
     Nombre : <input type="text" name="Nombre" /><br /><br />
     Localidad : <input type="text" name="Localidad" /><br /><br />
-    <button type="submit">Insertar</button>
+    <button type="submit" class="alert-success">Insertar</button>
 </form>
 @Html.ActionLink("Ir a eliminar", "Eliminar", "Departamentos")
         

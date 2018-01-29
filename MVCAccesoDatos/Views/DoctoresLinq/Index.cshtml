@@ -1,0 +1,21 @@
+﻿
+@model List<MVCAccesoDatos.Models.DOCTOR>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de doctores</h2>
+<ul>
+    @foreach(var doc in Model)
+    {
+        <li>
+            @doc.APELLIDO
+            @Html.ActionLink("Detalles","Detalle","DoctoresLinq"
+           , new { doctorno = doc.DOCTOR_NO},null)
+        </li>
+    }
+
+</ul>
+
+

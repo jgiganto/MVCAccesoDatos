@@ -59,6 +59,7 @@ namespace MVCAccesoDatos.Models
             }
             return lista;
         }
+       
 
         public Departamento BuscarDepartamento(int numero)
         {

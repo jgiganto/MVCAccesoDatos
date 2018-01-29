@@ -52,6 +52,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -144,14 +145,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DepartamentosController.cs" />
     <Compile Include="Controllers\DoctoresController.cs" />
+    <Compile Include="Controllers\DoctoresLinqController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContextoDoctor.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContextoDoctor.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\Doctores.cs" />
     <Compile Include="Models\ModeloDepartamentos.cs" />
     <Compile Include="Models\ModeloDoctores.cs" />
+    <Compile Include="Models\ModeloDoctorLinq.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +175,11 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Models\ContextoDoctor.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ContextoDoctor.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -198,6 +211,8 @@
     <Content Include="Views\Doctores\Index.cshtml" />
     <Content Include="Views\Doctores\Detalles.cshtml" />
     <Content Include="Views\Departamentos\Eliminar.cshtml" />
+    <Content Include="Views\DoctoresLinq\Index.cshtml" />
+    <Content Include="Views\DoctoresLinq\Detalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -214,6 +229,14 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\ContextoDoctor.dbml.layout">
+      <DependentUpon>ContextoDoctor.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
