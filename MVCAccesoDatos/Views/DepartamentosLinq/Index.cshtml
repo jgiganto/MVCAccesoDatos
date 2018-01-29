@@ -1,0 +1,22 @@
+﻿@model List<MVCAccesoDatos.Models.DEPT>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de departamentos</h2>
+
+<ul>
+    @foreach (var dep in Model)
+    {
+        <li>
+            @dep.DNOMBRE
+            @Html.ActionLink("Detalles","Detalle","DepartamentosLinq"
+           , new { Depno = dep.DEPT_NO},null)
+        </li>
+
+    }
+
+
+</ul>
+

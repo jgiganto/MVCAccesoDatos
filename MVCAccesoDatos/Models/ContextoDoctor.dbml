@@ -9,4 +9,11 @@
       <Column Name="SALARIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.DEPT" Member="DEPTs">
+    <Type Name="DEPT">
+      <Column Name="DEPT_NO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DNOMBRE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LOC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

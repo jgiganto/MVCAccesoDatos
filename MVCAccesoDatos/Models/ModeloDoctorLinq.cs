@@ -21,10 +21,10 @@ namespace MVCAccesoDatos.Models
             return consulta.ToList();
         }
 
-        public DOCTOR BuscarDoctor(String doctono)
+        public DOCTOR BuscarDoctor(String doctorno)
         {
             var consulta = from datos in contexto.DOCTORs
-                           where datos.DOCTOR_NO == doctono
+                           where datos.DOCTOR_NO == doctorno
                            select datos;
 
             //podria suceder que no tivieramos doctor o que no encontrase resultados

@@ -1,0 +1,16 @@
+﻿@model MVCAccesoDatos.Models.DEPT
+
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<h2>Detalle departamento</h2>
+
+
+<dl>
+    <dt>Nombre: @Model.DNOMBRE</dt>
+    <dt>Localidad: @Model.LOC</dt>
+
+@Html.ActionLink("Volver a la lista ", "Index", "DepartamentosLinq")
+
+    </dl>

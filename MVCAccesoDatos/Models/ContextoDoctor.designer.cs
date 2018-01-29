@@ -69,6 +69,14 @@ namespace MVCAccesoDatos.Models
 				return this.GetTable<DOCTOR>();
 			}
 		}
+		
+		public System.Data.Linq.Table<DEPT> DEPTs
+		{
+			get
+			{
+				return this.GetTable<DEPT>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DOCTOR")]
@@ -165,6 +173,69 @@ namespace MVCAccesoDatos.Models
 				if ((this._SALARIO != value))
 				{
 					this._SALARIO = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DEPT")]
+	public partial class DEPT
+	{
+		
+		private System.Nullable<int> _DEPT_NO;
+		
+		private string _DNOMBRE;
+		
+		private string _LOC;
+		
+		public DEPT()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DEPT_NO", DbType="Int")]
+		public System.Nullable<int> DEPT_NO
+		{
+			get
+			{
+				return this._DEPT_NO;
+			}
+			set
+			{
+				if ((this._DEPT_NO != value))
+				{
+					this._DEPT_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DNOMBRE", DbType="NVarChar(50)")]
+		public string DNOMBRE
+		{
+			get
+			{
+				return this._DNOMBRE;
+			}
+			set
+			{
+				if ((this._DNOMBRE != value))
+				{
+					this._DNOMBRE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOC", DbType="NVarChar(50)")]
+		public string LOC
+		{
+			get
+			{
+				return this._LOC;
+			}
+			set
+			{
+				if ((this._LOC != value))
+				{
+					this._LOC = value;
 				}
 			}
 		}

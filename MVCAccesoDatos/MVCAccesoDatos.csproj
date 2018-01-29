@@ -144,6 +144,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DepartamentosController.cs" />
+    <Compile Include="Controllers\DepartamentosLinqController.cs" />
     <Compile Include="Controllers\DoctoresController.cs" />
     <Compile Include="Controllers\DoctoresLinqController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -156,7 +157,9 @@
       <DependentUpon>ContextoDoctor.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\Departamento.cs" />
+    <Compile Include="Models\Departamentos.cs" />
     <Compile Include="Models\Doctores.cs" />
+    <Compile Include="Models\ModeloDepartamentoLinq.cs" />
     <Compile Include="Models\ModeloDepartamentos.cs" />
     <Compile Include="Models\ModeloDoctores.cs" />
     <Compile Include="Models\ModeloDoctorLinq.cs" />
@@ -213,6 +216,8 @@
     <Content Include="Views\Departamentos\Eliminar.cshtml" />
     <Content Include="Views\DoctoresLinq\Index.cshtml" />
     <Content Include="Views\DoctoresLinq\Detalle.cshtml" />
+    <Content Include="Views\DepartamentosLinq\Index.cshtml" />
+    <Content Include="Views\DepartamentosLinq\Detalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
