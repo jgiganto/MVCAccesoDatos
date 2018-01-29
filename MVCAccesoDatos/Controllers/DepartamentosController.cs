@@ -33,12 +33,17 @@ namespace MVCAccesoDatos.Controllers
              
             return View(lista);
         }
+        public ActionResult Eliminar( )
+        {
+    
+            return View( );
+        }
         [HttpPost]
-        public ActionResult Index(int numerodel)
+        public ActionResult Eliminar(int numerodel)
         {
             modelo.EliminarDepartamento(numerodel);
-            List<Departamento> lista = modelo.GetDepartamentos();
-            return View(lista);
+         
+            return View();
         }
 
         public ActionResult Detalles(int deptno)

@@ -34,7 +34,7 @@ namespace MVCAccesoDatos.Models
         public ModeloDepartamentos()
         {
             this.cadenaconexion =
-            ConfigurationManager.ConnectionStrings["casa"].ConnectionString;
+            ConfigurationManager.ConnectionStrings["tajamar"].ConnectionString;
             this.com = new SqlCommand();
             this.cn = new SqlConnection(this.cadenaconexion);
             this.com.Connection = this.cn;

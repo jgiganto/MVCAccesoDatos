@@ -10,8 +10,8 @@
 <h2 style="color:aquamarine">Nombre: @Model.Nombre</h2>
 <h2 style="color:aquamarine">Localidad: @Model.Localidad</h2>
 <hr />
-@Html.ActionLink("Volver al listado","Index","Departamentos")
-
+@Html.ActionLink("Volver al listado","Index","Departamentos")<hr />
+@Html.ActionLink("Ir a eliminar", "Eliminar", "Departamentos")
 <div>
     <h2>Modificar departamento</h2>
     <form method="post">

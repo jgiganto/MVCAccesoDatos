@@ -197,6 +197,7 @@
     <Content Include="Views\Departamentos\Detalles.cshtml" />
     <Content Include="Views\Doctores\Index.cshtml" />
     <Content Include="Views\Doctores\Detalles.cshtml" />
+    <Content Include="Views\Departamentos\Eliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
